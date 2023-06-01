@@ -1,0 +1,63 @@
+<script>
+    const currentUrl = window.location.pathname;
+    const currentUrlKey = currentUrl.replace(/\/|\.html/g, '');
+
+    const navItems = document.querySelectorAll('nav ul li');
+    navItems.forEach(item => {
+        if (item.id === currentUrlKey + '-item') {
+            item.classList.add('active');
+        }
+    });
+</script>
+
+<header>
+    <!-- Make image go home -->
+    <a href="/"><img id="logo" src="/favicon.png" alt="favicon"></a>
+    <nav>
+        <ul>
+            <li id="home-item"><a href="/">Home</a></li>
+            <li id="roulette-item" ><a href="/roulette">Roulette</a></li>
+            <li id="blackjack-item"><a href="/blackjack">Blackjack</a></li>
+            <li id="keno-item"><a href="/keno">Keno</a></li>
+            <li id="slots-item"><a href="/slots">Slots</a></li>
+        </ul>
+</header>
+
+<style>
+    img {
+        height: 50px;
+    }
+    #logo:hover {
+        opacity: 0.5;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        background-color: #00000042;
+        color: #fff;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin-left: 1rem;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover {
+        color: #ccc;
+    }
+
+    .active {
+        display: none;
+    }
+</style>

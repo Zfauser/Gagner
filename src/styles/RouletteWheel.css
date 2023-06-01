@@ -1,0 +1,16 @@
+.roulette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#numberDisp {
+  margin: 1rem;
+  font-size: 4rem;
+}
+
+#previousNumber,
+#nextNumber {
+  font-size: 2rem;
+  margin: 0 1rem;
+}
