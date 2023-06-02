@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/RouletteWheel.css";
+import BettingTable from './BettingTable.astro';
+
+let winningNumber = null;
 
 const numbers = [
   0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24,
@@ -14,7 +17,7 @@ const black = [
   2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35,
 ];
 
-const RouletteWheel = () => {
+const RouletteWheel = (props) => {
   const [number, setNumber] = useState(0);
   const [numberColor, setNumberColor] = useState("black");
   const [previousNumberColor, setPreviousNumberColor] = useState("black");
@@ -31,6 +34,10 @@ const RouletteWheel = () => {
     const num = getRandomNumber();
     let numColor = "";
     const i = numbers.length * 2 + numbers.indexOf(num) + 1;
+    winningNumber = numbers[i - (numbers.length * 2) - 1];
+    console.log("winning number: " + winningNumber);
+    // save to local storage
+    localStorage.setItem('winningNumber', winningNumber);
     setSpinning(true);
     for (let j = 0; j < i; j++) {
       setTimeout(() => {
@@ -60,6 +67,23 @@ const RouletteWheel = () => {
     );
   }, [number, previousNumber, nextNumber]);
 
+  const spinButton = document.getElementById('spinButton');
+
+  const clearBetsButton = document.getElementById('clearBetsButton');
+  // if spin button is clicked, disable betting buttons until spinning is false
+  if (spinning) {
+    bettingButtons.forEach(button => {
+      button.disabled = true;
+    });
+    clearBetsButton.disabled = true;
+  }
+  if (!spinning) {
+    bettingButtons.forEach(button => {
+      button.disabled = false;
+    });
+    clearBetsButton.disabled = false;
+  }
+
   return (
     <div className="rouletteWheel">
     <div className="roulette">
@@ -74,13 +98,12 @@ const RouletteWheel = () => {
       </h1>
     </div>
     <div className="spinButton">
-    <button onClick={spin} disabled={spinning}>
+    <button id="spinButton" onClick={spin} disabled={spinning}>
         {spinning ? "Spinning..." : "Spin"}
       </button>
     </div>
     <hr></hr>
     </div>
-  );
+);
 };
-
 export default RouletteWheel;

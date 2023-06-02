@@ -1,20 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import RouletteWheel from '../components/RouletteWheel.jsx';
-import MoneyDisplay from '../components/MoneyDisplay.jsx';
 import BettingTable  from '../components/BettingTable.astro';
 ---
-
-
-<Layout title="Roulette">
-    <Header url=${currentUrl} />
-    <main>
-        <RouletteWheel client:load />
-        <BettingTable client:load />
-    </main>
-</Layout>
-
 <style>
     main {
         margin: auto;
@@ -29,3 +17,10 @@ import BettingTable  from '../components/BettingTable.astro';
         margin: 0;
     }
 </style>
+
+<Layout title="Roulette">
+    <Header url=${currentUrl} />
+    <main>
+        <BettingTable />
+    </main>
+</Layout>

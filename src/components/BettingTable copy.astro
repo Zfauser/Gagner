@@ -1,7 +1,3 @@
----
-import RouletteWheel from './RouletteWheel.jsx';
----
-<RouletteWheel client:only />
 <div>
   <h2 id="totalMoney">Total Money: 0</h2>
   <h2 id="currentBet">Current Bet: 0</h2>
@@ -70,8 +66,8 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td>
-            <button name="vertical" id="2to1-first">
-              2 to 1 (1st12)
+            <button name="vertical" id="first">
+              2 to 1
             </button>
           </td>
           <td></td>
@@ -143,8 +139,8 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td>
-              <button name="vertical" id="2to1-second">
-              2 to 1 (2nd12)
+              <button name="vertical" id="second">
+              2 to 1
               </button>
           </td>
         </tr>
@@ -211,8 +207,8 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td>
-              <button name="vertical" id="2to1-third">
-              2 to 1 (3rd12)
+              <button name="vertical" id="third">
+              2 to 1
               </button>
           </td>
           <td></td>
@@ -220,17 +216,17 @@ import RouletteWheel from './RouletteWheel.jsx';
         <tr>
           <td></td>
           <td colspan="4">
-              <button name="horizontal" id="1st12" style={{ width: "100%" }}>
+              <button name="horizontal" id="first" style={{ width: "100%" }}>
               1st 12
               </button>
           </td>
           <td colspan="4">
-              <button name="horizontal" id="2nd12" style={{ width: "100%" }}>
+              <button name="horizontal" id="second" style={{ width: "100%" }}>
               2nd 12
               </button>
           </td>
           <td colspan="4">
-              <button name="horizontal" id="3rd12" style={{ width: "100%" }}>
+              <button name="horizontal" id="third" style={{ width: "100%" }}>
               3rd 12
               </button>
           </td>
@@ -239,7 +235,7 @@ import RouletteWheel from './RouletteWheel.jsx';
           <tr>
           <td></td>
           <td colspan="2">
-              <button name="eighteen" id="1to18" style={{ width: "100%" }}>
+              <button name="eighteen" id="first" style={{ width: "100%" }}>
               1 to 18
               </button>
           </td>
@@ -264,7 +260,7 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td colspan="2">
-              <button name="eighteen" id="19to36" style={{ width: "100%" }}>
+              <button name="eighteen" id="second" style={{ width: "100%" }}>
               19 to 36
               </button>
           </td>
@@ -273,64 +269,195 @@ import RouletteWheel from './RouletteWheel.jsx';
       </tbody>
     </table>
     <br>
-    <button id="clearBetsButton" >Clear Bets</button>
+    <button id="lockIn">Lock In 🔒</button>
     <hr>
-    <br>
-    <h2>Bet List</h2>
-    <div id="betList"></div>
   </div>
 
 <script is:inline>
-let winningNumber;
-const bettingButtons = document.querySelectorAll('.roulette-table button');
-let totalMoney = 0;
-let currentBet = 0;
-let bets = {};
-// clear all local storage
-localStorage.clear();
-
-bettingButtons.forEach(button => {
-  button.addEventListener('click', event => {
-    const buttonId = event.target.id;
-    bets[buttonId] = (bets[buttonId] || 0) + 1;
-    currentBet++;
-    document.getElementById('currentBet').textContent = `Current Bet: ${currentBet}`;
-    console.log(`Bet made on ${buttonId}`);
-  });
-
-  button.addEventListener('contextmenu', event => {
-    event.preventDefault();
-    const buttonId = event.target.id;
-    if (bets[buttonId]) {
-      bets[buttonId]--;
-      currentBet--;
-      document.getElementById('currentBet').textContent = `Current Bet: ${currentBet}`;
-      console.log(`Bet removed from ${buttonId}`);
+  let userBets = {
+    numbers: {
+      0: 0,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+      8: 0,
+      9: 0,
+      10: 0,
+      11: 0,
+      12: 0,
+      13: 0,
+      14: 0,
+      15: 0,
+      16: 0,
+      17: 0,
+      18: 0,
+      19: 0,
+      20: 0,
+      21: 0,
+      22: 0,
+      23: 0,
+      24: 0,
+      25: 0,
+      26: 0,
+      27: 0,
+      28: 0,
+      29: 0,
+      30: 0,
+      31: 0,
+      32: 0,
+      33: 0,
+      34: 0,
+      35: 0,
+      36: 0
+    },
+    twelve: {
+      horizontal: {
+        first: 0, // 1-12
+        second: 0, // 13-24
+        third: 0 // 25-36
+      },
+      vertical: {
+        first: 0, // 1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34
+        second: 0, // 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32
+        third: 0 // 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33
+      }
+    },
+    eighteen: {
+      first: 0, // 1-18
+      second: 0 // 19-36
+    },
+    colors: {
+      red: 0,
+      black: 0
+    },
+    evenOdd: {
+      even: 0,
+      odd: 0
     }
-  });
-});
+};
+    // on click of any inside of roulette-table class
+    let totalBet = 0;
+    let money = 10;
+    document.getElementById('totalMoney').innerHTML = "Total Money: " + (money)
+    const bettingButtons = document.querySelectorAll('.roulette-table button');
+    bettingButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        let name = button.getAttribute('name');
+        let id = button.getAttribute('id');
+        if (name === 'numbers') {
+          if (totalBet == money) {
+            alert('You have no more money to bet!');
+            return;
+          }
+          userBets.numbers[id] += 1;
+          totalBet += 1;
+          console.log(userBets.numbers);
+          console.log(totalBet);
+        } else if (name === 'horizontal') {
+          if (totalBet == money) {
+            alert('You have no more money to bet!');
+            return;
+          }
+          userBets.twelve.horizontal[id] += 1;
+          totalBet += 1;
+          console.log(userBets.twelve.horizontal);
+        } else if (name === 'vertical') {
+          if (totalBet == money) {
+            alert('You have no more money to bet!');
+            return;
+          }
+          userBets.twelve.vertical[id] += 1;
+          totalBet += 1;
+          console.log(userBets.twelve.vertical);
+        } else if (name === 'eighteen') {
+          if (totalBet == money) {
+            alert('You have no more money to bet!');
+            return;
+          }
+          userBets.eighteen[id] += 1;
+          totalBet += 1;
+          console.log(userBets.eighteen);
+        } else if (name === 'colors') {
+          if (totalBet == money) {
+            alert('You have no more money to bet!');
+            return;
+          }
+          userBets.colors[id] += 1;
+          totalBet += 1;
+          console.log(userBets.colors);
+        } else if (name === 'evenOdd') {
+          if (totalBet == money) {
+            alert('You have no more money to bet!');
+            return;
+          }
+          userBets.evenOdd[id] += 1;
+          totalBet += 1;
+          console.log(userBets.evenOdd);
+        }
+        document.getElementById('currentBet').innerHTML = "Current Bet: " + totalBet;
+      });
+    });
+    // listen for right click on any button
+    bettingButtons.forEach(button => {
+      button.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        let name = button.getAttribute('name');
+        let id = button.getAttribute('id');
+        if (name === 'numbers') {
+          if (userBets.numbers[id] > 0) {
+            userBets.numbers[id] -= 1;
+            if (totalBet > 0) {
+              totalBet -= 1;
+            }
+            console.log(userBets.numbers);
+          }
+        } else if (name === 'horizontal') {
+          if (userBets.twelve.horizontal[id] > 0) {
+            userBets.twelve.horizontal[id] -= 1;
+            if (totalBet > 0) {
+              totalBet -= 1;
+            }
+            console.log(userBets.twelve.horizontal);
+          }
+        } else if (name === 'vertical') {
+          if (userBets.twelve.vertical[id] > 0) {
+            userBets.twelve.vertical[id] -= 1;
+            if (totalBet > 0) {
+              totalBet -= 1;
+            }
+            console.log(userBets.twelve.vertical);
+          }
+        } else if (name === 'eighteen') {
+          if (userBets.eighteen[id] > 0) {
+            userBets.eighteen[id] -= 1;
+            if (totalBet > 0) {
+              totalBet -= 1;
+            }
+            console.log(userBets.eighteen);
+          }
+        } else if (name === 'colors') {
+          if (userBets.colors[id] > 0) {
+            userBets.colors[id] -= 1;
+            if (totalBet > 0) {
+              totalBet -= 1;
+            }
+            console.log(userBets.colors);
+          }
+        } else if (name === 'evenOdd') {
+          if (userBets.evenOdd[id] > 0) {
+            userBets.evenOdd[id] -= 1;
+            if (totalBet > 0) {
+              totalBet -= 1;
+            }
+            console.log(userBets.evenOdd);
+          }
+        }
+        document.getElementById('currentBet').innerHTML = "Current Bet: " + totalBet;
+      });
+    });
 
-function updateBets() {
-  let betList = '';
-  for (const buttonId in bets) {
-    if (bets[buttonId] > 0) {
-      const betAmount = bets[buttonId];
-      const buttonName = document.getElementById(buttonId).textContent.trim();
-      betList += `<li>${buttonName}: ${betAmount}</li>`;
-    }
-  }
-  document.getElementById('betList').innerHTML = betList;
-}
-
-setInterval(() => {
-  updateBets();
-}, 0o1);
-
-let clearBets = document.getElementById('clearBetsButton')
-
-clearBets.addEventListener('click', () => {
-  bets = {};
-  currentBet = 0;
-  document.getElementById('currentBet').textContent = `Current Bet: ${currentBet}`;
-});
 </script>
