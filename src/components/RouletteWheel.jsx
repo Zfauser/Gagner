@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../styles/RouletteWheel.css";
 import BettingTable from './BettingTable.astro';
 
+const originalUrl = window.location.href.split('?')[0];
+window.history.pushState({}, '', `${originalUrl}?doneSpinning=false`);
+
 let winningNumber = null;
 
 const numbers = [
@@ -35,10 +38,11 @@ const RouletteWheel = (props) => {
     let numColor = "";
     const i = numbers.length * 2 + numbers.indexOf(num) + 1;
     winningNumber = numbers[i - (numbers.length * 2) - 1];
-    console.log("winning number: " + winningNumber);
     // save to local storage
     localStorage.setItem('winningNumber', winningNumber);
     setSpinning(true);
+    // add '?doneSpinning=false' to url params
+    window.history.pushState({}, '', `${originalUrl}?doneSpinning=false`);
     for (let j = 0; j < i; j++) {
       setTimeout(() => {
         setSpinning(true);
@@ -48,6 +52,7 @@ const RouletteWheel = (props) => {
           // last iteration, so set spinning to false
           setSpinning(false);
           document.getElementById("numberDisp").classList.add("winner");
+          window.history.pushState({}, '', `${originalUrl}?doneSpinning=true`);
         }
       }, j * (j * 1.25));
     }

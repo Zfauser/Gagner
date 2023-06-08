@@ -70,7 +70,7 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td>
-            <button name="vertical" id="2to1-first">
+            <button name="vertical" id="twoToOneFirstTwelve">
               2 to 1 (1st12)
             </button>
           </td>
@@ -143,7 +143,7 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td>
-              <button name="vertical" id="2to1-second">
+              <button name="vertical" id="twoToOneSecondTwelve">
               2 to 1 (2nd12)
               </button>
           </td>
@@ -211,7 +211,7 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td>
-              <button name="vertical" id="2to1-third">
+              <button name="vertical" id="twoToOneThirdTwelve">
               2 to 1 (3rd12)
               </button>
           </td>
@@ -220,17 +220,17 @@ import RouletteWheel from './RouletteWheel.jsx';
         <tr>
           <td></td>
           <td colspan="4">
-              <button name="horizontal" id="1st12" style={{ width: "100%" }}>
+              <button name="horizontal" id="firstTwelve" style={{ width: "100%" }}>
               1st 12
               </button>
           </td>
           <td colspan="4">
-              <button name="horizontal" id="2nd12" style={{ width: "100%" }}>
+              <button name="horizontal" id="secondTwelve" style={{ width: "100%" }}>
               2nd 12
               </button>
           </td>
           <td colspan="4">
-              <button name="horizontal" id="3rd12" style={{ width: "100%" }}>
+              <button name="horizontal" id="thirdTwelve" style={{ width: "100%" }}>
               3rd 12
               </button>
           </td>
@@ -239,7 +239,7 @@ import RouletteWheel from './RouletteWheel.jsx';
           <tr>
           <td></td>
           <td colspan="2">
-              <button name="eighteen" id="1to18" style={{ width: "100%" }}>
+              <button name="eighteen" id="oneToEighteen" style={{ width: "100%" }}>
               1 to 18
               </button>
           </td>
@@ -264,7 +264,7 @@ import RouletteWheel from './RouletteWheel.jsx';
               </button>
           </td>
           <td colspan="2">
-              <button name="eighteen" id="19to36" style={{ width: "100%" }}>
+              <button name="eighteen" id="nineteenToThirtySix" style={{ width: "100%" }}>
               19 to 36
               </button>
           </td>
@@ -274,26 +274,143 @@ import RouletteWheel from './RouletteWheel.jsx';
     </table>
     <br>
     <button id="clearBetsButton" >Clear Bets</button>
-    <hr>
     <br>
-    <h2>Bet List</h2>
+    <hr>
+    <h2>Betslip</h2>
     <div id="betList"></div>
-  </div>
+    <br>
+    <hr>
+    <h2>Winning Bets</h2>
+    <div id="winningBets"></div>
+    <br>
+    <hr>
+      <svg viewBox="0 0 24 24" aria-label="Verified account" role="img" class="r-15jbc68 r-4qtqp9 r-yyyyoo r-1xvli5t r-f9ja8p r-og9te1 r-bnwqim r-1plcrui r-lrvibr" data-testid="icon-verified" fill="#829AAB">
+        <g>
+            <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"></path>
+        </g>
+      </svg>
+      <svg viewBox="0 0 24 24" aria-label="Verified account" role="img" class="r-15jbc68 r-4qtqp9 r-yyyyoo r-1xvli5t r-f9ja8p r-og9te1 r-bnwqim r-1plcrui r-lrvibr" data-testid="icon-verified" fill="#1DA1F2">
+        <g>
+            <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"></path>
+        </g>
+      </svg>
+      <svg viewBox="0 0 24 24" aria-label="Verified account" role="img" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-9cviqr r-f9ja8p r-og9te1 r-bnwqim r-1plcrui r-lrvibr" data-testid="icon-verified">
+        <g>
+            <path clip-rule="evenodd" d="M8.52 3.59c.388-.568.908-1.032 1.515-1.353.607-.32 1.284-.488 1.97-.488.687 0 1.364.168 1.971.488.607.321 1.127.785 1.514 1.352.675-.127 1.37-.088 2.027.115.656.203 1.252.563 1.737 1.05.485.485.844 1.082 1.046 1.739.201.656.24 1.352.11 2.026.567.387 1.031.906 1.352 1.512.32.607.488 1.282.488 1.968 0 .686-.167 1.362-.488 1.968-.32.607-.785 1.126-1.352 1.512.13.675.091 1.37-.11 2.027-.202.656-.56 1.253-1.046 1.74-.485.485-1.081.846-1.737 1.048-.656.203-1.352.243-2.026.115-.388.567-.908 1.032-1.515 1.352-.607.32-1.284.489-1.97.489-.687 0-1.364-.168-1.971-.489-.607-.32-1.127-.785-1.515-1.352-.675.12-1.369.077-2.025-.124-.655-.202-1.253-.557-1.745-1.036-.477-.492-.83-1.09-1.032-1.745-.202-.656-.246-1.35-.128-2.025-.56-.393-1.018-.913-1.338-1.518-.32-.605-.492-1.277-.502-1.962.01-.684.182-1.356.502-1.961S3.03 8.913 3.59 8.519c-.12-.675-.077-1.37.124-2.025.202-.656.557-1.254 1.036-1.745.492-.478 1.09-.833 1.745-1.035.656-.202 1.35-.244 2.025-.125zm2.27 12.565l-3.74-3.74 1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z" fill="url(#paint0_linear_7351_410156)" fill-rule="evenodd"></path>
+            <path clip-rule="evenodd" d="M10.202 3.072c-.555.293-1.03.717-1.385 1.236-.618-.11-1.253-.07-1.852.114-.6.185-1.147.51-1.596.947-.438.449-.763.996-.948 1.596-.184.6-.223 1.234-.113 1.852-.512.36-.932.836-1.224 1.39-.293.552-.45 1.167-.459 1.793.009.626.166 1.24.459 1.794.292.553.712 1.03 1.224 1.389-.108.617-.068 1.252.116 1.851.185.6.508 1.147.945 1.597.45.438.996.762 1.596.947.6.184 1.234.223 1.852.114.354.519.83.943 1.385 1.236.556.294 1.174.447 1.803.447.628 0 1.246-.153 1.802-.447.555-.293 1.03-.717 1.385-1.236.617.116 1.253.08 1.854-.105.6-.186 1.145-.515 1.589-.96.443-.444.771-.99.956-1.59.184-.601.219-1.237.101-1.854.519-.354.943-.828 1.236-1.383.294-.555.447-1.173.447-1.8s-.153-1.245-.447-1.8c-.293-.555-.717-1.03-1.236-1.383.118-.617.083-1.253-.101-1.853-.184-.6-.513-1.147-.956-1.591-.444-.445-.99-.774-1.59-.96-.6-.185-1.236-.221-1.853-.105-.354-.519-.83-.943-1.385-1.236-.556-.294-1.174-.447-1.802-.447-.629 0-1.247.153-1.803.447zm.588 13.008l-3.74-3.74 1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z" fill="#F9E87F" fill-rule="evenodd"></path>
+            <path clip-rule="evenodd" d="M10.202 3.072c-.555.293-1.03.717-1.385 1.236-.618-.11-1.253-.07-1.852.114-.6.185-1.147.51-1.596.947-.438.449-.763.996-.948 1.596-.184.6-.223 1.234-.113 1.852-.512.36-.932.836-1.224 1.39-.293.552-.45 1.167-.459 1.793.009.626.166 1.24.459 1.794.292.553.712 1.03 1.224 1.389-.108.617-.068 1.252.116 1.851.185.6.508 1.147.945 1.597.45.438.996.762 1.596.947.6.184 1.234.223 1.852.114.354.519.83.943 1.385 1.236.556.294 1.174.447 1.803.447.628 0 1.246-.153 1.802-.447.555-.293 1.03-.717 1.385-1.236.617.116 1.253.08 1.854-.105.6-.186 1.145-.515 1.589-.96.443-.444.771-.99.956-1.59.184-.601.219-1.237.101-1.854.519-.354.943-.828 1.236-1.383.294-.555.447-1.173.447-1.8s-.153-1.245-.447-1.8c-.293-.555-.717-1.03-1.236-1.383.118-.617.083-1.253-.101-1.853-.184-.6-.513-1.147-.956-1.591-.444-.445-.99-.774-1.59-.96-.6-.185-1.236-.221-1.853-.105-.354-.519-.83-.943-1.385-1.236-.556-.294-1.174-.447-1.802-.447-.629 0-1.247.153-1.803.447zm.588 13.008l-3.74-3.74 1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z" fill="url(#paint1_linear_7351_410156)" fill-opacity=".8" fill-rule="evenodd"></path>
+            <path d="M7.05 12.346v1.424l3.74 3.74 6.2-6.77V9.295l-.114-.085.114.106-6.2 6.77-3.74-3.74z" fill="#D18800"></path>
+            <path d="M7.094 12.302l-.044.044v-.072l.044.028z" fill="#D18800"></path>
+            <defs>
+                <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_7351_410156" x1="4.5" x2="22.8" y1="4.5" y2="23.4">
+                    <stop stop-color="#F4E72A"></stop>
+                    <stop offset=".474" stop-color="#CD8105"></stop>
+                    <stop offset=".602" stop-color="#CB7B00"></stop>
+                    <stop offset="1" stop-color="#F4EC26"></stop>
+                </linearGradient>
+                <linearGradient gradientUnits="userSpaceOnUse" id="paint1_linear_7351_410156" x1="5.14" x2="18.859" y1="5.141" y2="18.861">
+                    <stop stop-color="#F9E87F"></stop>
+                    <stop offset=".406" stop-color="#DCAB00"></stop>
+                    <stop offset=".989" stop-color="#DCAB00"></stop>
+                    <stop offset=".99" stop-color="#F9E87F"></stop>
+                </linearGradient>
+            </defs>
+        </g>
+    </svg>
+    <br>
+    Proudly Triple Check Certified By <a href="https://zachfauser.com/">The Zach Fauser Gambling Commission</a>
+    <br>
+</div>
+
+  <style>
+    svg {
+      width: 5%;
+      height: 5%;
+    }
+    a {
+      color: white;
+    }
+    a:hover {
+      color: #829AAB
+    }
+  </style>
 
 <script is:inline>
+
 let winningNumber;
 const bettingButtons = document.querySelectorAll('.roulette-table button');
-let totalMoney = 0;
+// if totalMoney is not in local storage, set it to 100
+let totalMoney = 100;
+document.getElementById('totalMoney').textContent = `Total Money: ${totalMoney}`;
 let currentBet = 0;
 let bets = {};
+const numbers = [
+    0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24,
+    16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26,
+  ];
+
+const red = [
+    1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36
+];
+
+const black = [
+  2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35,
+];
+
+const twoToOneFirstTwelve = [
+    3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36
+];
+
+const twoToOneSecondTwelve = [
+    2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35
+];
+
+const twoToOneThirdTwelve = [
+    1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34
+];
+
+const firstTwelve = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12
+];
+
+const secondTwelve = [
+    13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ,23, 24
+];
+
+const thirdTwelve = [
+    25, 26, 27, 28, 29, 30, 31, 32, 33, 34 ,35, 36
+];
+
+const oneToEighteen = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16, 17, 18
+];
+
+const nineteenToThirtySix = [
+    19, 20, 21, 22, 23, 24, 25, 26, 27, 28 ,29, 30, 31, 32, 33, 34, 35, 36
+];
+
+const even = [
+    2, 4, 6, 8, 10, 12, 14, 16, 18, 20 ,22, 24, 26, 28, 30, 32, 34, 36
+];
+
+const odd = [
+    1, 3, 5, 7, 9, 11, 13, 15, 17, 19 ,21, 23, 25, 27, 29, 31, 33, 35
+];
+
 // clear all local storage
 localStorage.clear();
 
 bettingButtons.forEach(button => {
   button.addEventListener('click', event => {
+    if (totalMoney == 0) {
+      alert('You are out of money!');
+      return;
+    }
     const buttonId = event.target.id;
     bets[buttonId] = (bets[buttonId] || 0) + 1;
     currentBet++;
+    totalMoney = parseInt(totalMoney) - 1;
+    updateBets();
     document.getElementById('currentBet').textContent = `Current Bet: ${currentBet}`;
     console.log(`Bet made on ${buttonId}`);
   });
@@ -304,6 +421,8 @@ bettingButtons.forEach(button => {
     if (bets[buttonId]) {
       bets[buttonId]--;
       currentBet--;
+      totalMoney = parseInt(totalMoney) + 1;
+      updateBets();
       document.getElementById('currentBet').textContent = `Current Bet: ${currentBet}`;
       console.log(`Bet removed from ${buttonId}`);
     }
@@ -312,6 +431,8 @@ bettingButtons.forEach(button => {
 
 function updateBets() {
   let betList = '';
+  // save bets to local storage
+  localStorage.setItem('bets', JSON.stringify(bets));
   for (const buttonId in bets) {
     if (bets[buttonId] > 0) {
       const betAmount = bets[buttonId];
@@ -319,18 +440,119 @@ function updateBets() {
       betList += `<li>${buttonName}: ${betAmount}</li>`;
     }
   }
+  document.getElementById('totalMoney').textContent = `Total Money: ${totalMoney}`;
   document.getElementById('betList').innerHTML = betList;
 }
-
-setInterval(() => {
-  updateBets();
-}, 0o1);
 
 let clearBets = document.getElementById('clearBetsButton')
 
 clearBets.addEventListener('click', () => {
   bets = {};
+  totalMoney = parseInt(currentBet) + parseInt(totalMoney);
   currentBet = 0;
+  updateBets();
   document.getElementById('currentBet').textContent = `Current Bet: ${currentBet}`;
 });
+
+function getMultiply(betType) {
+  if (betType == 'red' || betType == 'black') {
+    return 2;
+  } else if (betType == 'even' || betType == 'odd') {
+    return 2;
+  } else if (betType == 'oneToEighteen' || betType == 'nineteenToThirtySix') {
+    return 2;
+  } else if (betType == 'twoToOneFirstTwelve' || betType == 'twoToOneSecondTwelve' || betType == 'twoToOneThirdTwelve') {
+    return 3;
+  } else if (betType == 'firstTwelve' || betType == 'secondTwelve' || betType == 'thirdTwelve') {
+    return 3;
+  } else {
+    return 37;
+  }
+}
+
+function checkURL() {
+  let paid;
+  const urlParams = new URLSearchParams(window.location.search);
+  const doneSpinning = urlParams.get('doneSpinning') === 'true';
+  if (doneSpinning) {
+    window.history.replaceState({}, document.title, "/roulette?doneSpinning=false");
+    // get winning number from local storage
+    winningNumber = localStorage.getItem('winningNumber');
+    let winningBets = [];
+    // check which array the winning number is in
+    if (red.includes(parseInt(winningNumber))) {
+      winningBets.push('red');
+    } else if (black.includes(parseInt(winningNumber))) {
+      winningBets.push('black');
+    }
+    if (twoToOneFirstTwelve.includes(parseInt(winningNumber))) {
+      winningBets.push('twoToOneFirstTwelve');
+    } else if (twoToOneSecondTwelve.includes(parseInt(winningNumber))) {
+      winningBets.push('twoToOneSecondTwelve');
+    } else if (twoToOneThirdTwelve.includes(parseInt(winningNumber))) {
+      winningBets.push('twoToOneThirdTwelve');
+    }
+    if (firstTwelve.includes(parseInt(winningNumber))) {
+      winningBets.push('firstTwelve');
+    } else if (secondTwelve.includes(parseInt(winningNumber))) {
+      winningBets.push('secondTwelve');
+    } else if (thirdTwelve.includes(parseInt(winningNumber))) {
+      winningBets.push('thirdTwelve');
+    }
+    if (oneToEighteen.includes(parseInt(winningNumber))) {
+      winningBets.push('oneToEighteen');
+    } 
+    if (nineteenToThirtySix.includes(parseInt(winningNumber))) {
+      winningBets.push('nineteenToThirtySix');
+    }
+    if (even.includes(parseInt(winningNumber))) {
+      winningBets.push('even');
+    } else if (odd.includes(parseInt(winningNumber))) {
+      winningBets.push('odd');
+    }
+    // check if winning number is in bets
+    let playerBetTypes = [];
+    let playerBetAmounts = [];
+    let playerBetTypesWin = [];
+    let playerBetAmountsWin = [];
+    for (const buttonId in bets) {
+      const betType = buttonId.split('_')[0];
+      playerBetTypes.push(betType);
+      const betAmount = bets[buttonId];
+      playerBetAmounts.push(betAmount);
+    }
+    let payThePlayer = 0;
+    for (let i = 0; i < playerBetTypes.length; i++) {
+      if (winningBets.includes(playerBetTypes[i])) {
+        paid = playerBetAmounts[i] * getMultiply(playerBetTypes[i]);
+        playerBetTypesWin.push(playerBetTypes[i]);
+        playerBetAmountsWin.push(playerBetAmounts[i]);
+        payThePlayer += paid;
+      } else if (playerBetTypes[i] == winningNumber) {
+        paid = playerBetAmounts[i] * getMultiply('numbers');
+        playerBetTypesWin.push(playerBetTypes[i]);
+        playerBetAmountsWin.push(playerBetAmounts[i]);
+        payThePlayer += paid;
+      } else {
+        continue;
+      }
+    }
+    // add winning bets to document.getElementById('winningBets')
+    let winningBetsList = '';
+    for (let i = 0; i < playerBetTypesWin.length; i++) {
+      winningBetsList += `<li>${playerBetTypesWin[i]}</li>`;
+    }
+    document.getElementById('winningBets').innerHTML = winningBetsList;
+    if (paid == undefined) {
+      paid = 0;
+    }
+    totalMoney = (parseInt(totalMoney) + payThePlayer) - parseInt(currentBet)
+    // save to local storage
+    localStorage.setItem('totalMoney', parseInt(totalMoney));
+    // convert
+    clearBets.click();
+  }
+}
+
+setInterval(checkURL, 0o1);
 </script>
