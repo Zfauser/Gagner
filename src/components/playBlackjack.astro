@@ -1,0 +1,466 @@
+<body>
+    <div id="dealerCards" class="house"></div>
+    <p id="houseTotal" class="house">House Total: 0</p>
+    <hr />
+    <div id="playerCards" class="player"></div>
+    <p id="playerTotal" class="player">Player Total: 0</p>
+    <button id="hit" class="hit" disabled>Hit</button>
+    <button id="stand" class="stand" disabled>Stand</button>
+    <br>
+    <br>
+    <button id="double" class="double" disabled>Double Down</button>
+    <br />
+    <br />
+    <hr />
+    <h2 id="totalMoney">Total Money: 100</h2>
+    <input type="number" id="bet" class="bet" value="10" /><button
+        id="betButton"
+        class="betButton">Bet</button
+    ></body
+>
+<br />
+<hr />
+<svg
+    viewBox="0 0 24 24"
+    aria-label="Verified account"
+    role="img"
+    class="r-15jbc68 r-4qtqp9 r-yyyyoo r-1xvli5t r-f9ja8p r-og9te1 r-bnwqim r-1plcrui r-lrvibr"
+    data-testid="icon-verified"
+    fill="#829AAB"
+>
+    <g>
+        <path
+            d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"
+        ></path>
+    </g>
+</svg>
+<svg
+    viewBox="0 0 24 24"
+    aria-label="Verified account"
+    role="img"
+    class="r-15jbc68 r-4qtqp9 r-yyyyoo r-1xvli5t r-f9ja8p r-og9te1 r-bnwqim r-1plcrui r-lrvibr"
+    data-testid="icon-verified"
+    fill="#1DA1F2"
+>
+    <g>
+        <path
+            d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"
+        ></path>
+    </g>
+</svg>
+<svg
+    viewBox="0 0 24 24"
+    aria-label="Verified account"
+    role="img"
+    class="r-4qtqp9 r-yyyyoo r-1xvli5t r-9cviqr r-f9ja8p r-og9te1 r-bnwqim r-1plcrui r-lrvibr"
+    data-testid="icon-verified"
+>
+    <g>
+        <path
+            clip-rule="evenodd"
+            d="M8.52 3.59c.388-.568.908-1.032 1.515-1.353.607-.32 1.284-.488 1.97-.488.687 0 1.364.168 1.971.488.607.321 1.127.785 1.514 1.352.675-.127 1.37-.088 2.027.115.656.203 1.252.563 1.737 1.05.485.485.844 1.082 1.046 1.739.201.656.24 1.352.11 2.026.567.387 1.031.906 1.352 1.512.32.607.488 1.282.488 1.968 0 .686-.167 1.362-.488 1.968-.32.607-.785 1.126-1.352 1.512.13.675.091 1.37-.11 2.027-.202.656-.56 1.253-1.046 1.74-.485.485-1.081.846-1.737 1.048-.656.203-1.352.243-2.026.115-.388.567-.908 1.032-1.515 1.352-.607.32-1.284.489-1.97.489-.687 0-1.364-.168-1.971-.489-.607-.32-1.127-.785-1.515-1.352-.675.12-1.369.077-2.025-.124-.655-.202-1.253-.557-1.745-1.036-.477-.492-.83-1.09-1.032-1.745-.202-.656-.246-1.35-.128-2.025-.56-.393-1.018-.913-1.338-1.518-.32-.605-.492-1.277-.502-1.962.01-.684.182-1.356.502-1.961S3.03 8.913 3.59 8.519c-.12-.675-.077-1.37.124-2.025.202-.656.557-1.254 1.036-1.745.492-.478 1.09-.833 1.745-1.035.656-.202 1.35-.244 2.025-.125zm2.27 12.565l-3.74-3.74 1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"
+            fill="url(#paint0_linear_7351_410156)"
+            fill-rule="evenodd"></path>
+        <path
+            clip-rule="evenodd"
+            d="M10.202 3.072c-.555.293-1.03.717-1.385 1.236-.618-.11-1.253-.07-1.852.114-.6.185-1.147.51-1.596.947-.438.449-.763.996-.948 1.596-.184.6-.223 1.234-.113 1.852-.512.36-.932.836-1.224 1.39-.293.552-.45 1.167-.459 1.793.009.626.166 1.24.459 1.794.292.553.712 1.03 1.224 1.389-.108.617-.068 1.252.116 1.851.185.6.508 1.147.945 1.597.45.438.996.762 1.596.947.6.184 1.234.223 1.852.114.354.519.83.943 1.385 1.236.556.294 1.174.447 1.803.447.628 0 1.246-.153 1.802-.447.555-.293 1.03-.717 1.385-1.236.617.116 1.253.08 1.854-.105.6-.186 1.145-.515 1.589-.96.443-.444.771-.99.956-1.59.184-.601.219-1.237.101-1.854.519-.354.943-.828 1.236-1.383.294-.555.447-1.173.447-1.8s-.153-1.245-.447-1.8c-.293-.555-.717-1.03-1.236-1.383.118-.617.083-1.253-.101-1.853-.184-.6-.513-1.147-.956-1.591-.444-.445-.99-.774-1.59-.96-.6-.185-1.236-.221-1.853-.105-.354-.519-.83-.943-1.385-1.236-.556-.294-1.174-.447-1.802-.447-.629 0-1.247.153-1.803.447zm.588 13.008l-3.74-3.74 1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"
+            fill="#F9E87F"
+            fill-rule="evenodd"></path>
+        <path
+            clip-rule="evenodd"
+            d="M10.202 3.072c-.555.293-1.03.717-1.385 1.236-.618-.11-1.253-.07-1.852.114-.6.185-1.147.51-1.596.947-.438.449-.763.996-.948 1.596-.184.6-.223 1.234-.113 1.852-.512.36-.932.836-1.224 1.39-.293.552-.45 1.167-.459 1.793.009.626.166 1.24.459 1.794.292.553.712 1.03 1.224 1.389-.108.617-.068 1.252.116 1.851.185.6.508 1.147.945 1.597.45.438.996.762 1.596.947.6.184 1.234.223 1.852.114.354.519.83.943 1.385 1.236.556.294 1.174.447 1.803.447.628 0 1.246-.153 1.802-.447.555-.293 1.03-.717 1.385-1.236.617.116 1.253.08 1.854-.105.6-.186 1.145-.515 1.589-.96.443-.444.771-.99.956-1.59.184-.601.219-1.237.101-1.854.519-.354.943-.828 1.236-1.383.294-.555.447-1.173.447-1.8s-.153-1.245-.447-1.8c-.293-.555-.717-1.03-1.236-1.383.118-.617.083-1.253-.101-1.853-.184-.6-.513-1.147-.956-1.591-.444-.445-.99-.774-1.59-.96-.6-.185-1.236-.221-1.853-.105-.354-.519-.83-.943-1.385-1.236-.556-.294-1.174-.447-1.802-.447-.629 0-1.247.153-1.803.447zm.588 13.008l-3.74-3.74 1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"
+            fill="url(#paint1_linear_7351_410156)"
+            fill-opacity=".8"
+            fill-rule="evenodd"></path>
+        <path
+            d="M7.05 12.346v1.424l3.74 3.74 6.2-6.77V9.295l-.114-.085.114.106-6.2 6.77-3.74-3.74z"
+            fill="#D18800"></path>
+        <path d="M7.094 12.302l-.044.044v-.072l.044.028z" fill="#D18800"></path>
+        <defs>
+            <linearGradient
+                gradientUnits="userSpaceOnUse"
+                id="paint0_linear_7351_410156"
+                x1="4.5"
+                x2="22.8"
+                y1="4.5"
+                y2="23.4"
+            >
+                <stop stop-color="#F4E72A"></stop>
+                <stop offset=".474" stop-color="#CD8105"></stop>
+                <stop offset=".602" stop-color="#CB7B00"></stop>
+                <stop offset="1" stop-color="#F4EC26"></stop>
+            </linearGradient>
+            <linearGradient
+                gradientUnits="userSpaceOnUse"
+                id="paint1_linear_7351_410156"
+                x1="5.14"
+                x2="18.859"
+                y1="5.141"
+                y2="18.861"
+            >
+                <stop stop-color="#F9E87F"></stop>
+                <stop offset=".406" stop-color="#DCAB00"></stop>
+                <stop offset=".989" stop-color="#DCAB00"></stop>
+                <stop offset=".99" stop-color="#F9E87F"></stop>
+            </linearGradient>
+        </defs>
+    </g>
+</svg>
+<br />
+Proudly Triple Check Certified By <a href="https://zachfauser.com/"
+    >The Zach Fauser Gambling Commission</a
+>
+<br />
+
+<style>
+    svg {
+        width: 5%;
+        height: 5%;
+    }
+</style>
+<!-- JavaScript code -->
+<script>
+    // Define the card values and suits
+    const values = [
+        "A",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "J",
+        "Q",
+        "K",
+    ];
+    const suits = ["♠", "♥", "♦", "♣"];
+
+
+    // Define some global variables
+    let deck = []; // The array of cards
+    let houseHand = []; // The array of cards for the house
+    let playerHand = []; // The array of cards for the player
+    let totalMoney = 100; // The initial amount of money for the player
+    let bet = 0;
+    let gameOver = false;
+    // Create a function to create a deck of cards
+    function createDeck() {
+        deck = []; // Reset the deck
+        for (let suit of suits) {
+            // Loop through the suits
+            for (let value of values) {
+                // Loop through the values
+                let card = {
+                    // Create an object for each card
+                    suit: suit,
+                    value: value,
+                };
+                deck.push(card); // Add the card to the deck
+            }
+        }
+        shuffleDeck(); // Shuffle the deck
+    }
+
+    // Create a function to shuffle the deck using Fisher-Yates algorithm
+    function shuffleDeck() {
+        for (let i = deck.length - 1; i > 0; i--) {
+            // Loop through the deck from the end to the beginning
+            let j = Math.floor(Math.random() * (i + 1)); // Pick a random index from 0 to i
+            let temp = deck[i]; // Swap the card at index i with the card at index j
+            deck[i] = deck[j];
+            deck[j] = temp;
+        }
+        console.log(deck);
+    }
+
+    // Create a function to deal a card from the deck
+    function dealCard() {
+        return deck.pop(); // Remove and return the last card from the deck
+    }
+
+    let playersHandTable = document.getElementById("playerCards");
+
+    // Create a function to render a card as an HTML element
+    function renderPlayerCard(playersHand) {
+        /*
+        Here is an example of an expected input of playersHand:
+            0: {suit: '♦', value: 'J'}
+            1: {suit: '♥', value: 'Q'}
+        */
+       playersHandTable.innerHTML = "";
+        for (let i = 0; i < playersHand.length; i++) {
+            let card = playersHand[i];
+            let cardDiv = document.createElement("div");
+            cardDiv.className = "card";
+            cardDiv.innerHTML = card.value + " " + card.suit;
+            playersHandTable.appendChild(cardDiv);
+        }
+    }
+
+    function playerHit() {
+        playerHand.push(dealCard());
+        renderPlayerCard(playerHand);
+    }
+
+    function renderDealerFirstCard(){
+        let dealerHandTable = document.getElementById("dealerCards");
+        dealerHandTable.innerHTML = "";
+        let card = houseHand[0];
+        let cardDiv = document.createElement("div");
+        cardDiv.className = "card";
+        cardDiv.innerHTML = card.value + " " + card.suit;
+        dealerHandTable.appendChild(cardDiv);
+    }
+
+    function playerStand() {
+        (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+        (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+        (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+        (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+        (document.getElementById('double') as HTMLButtonElement).disabled = true;
+    }
+    function start() {
+        // Create the deck
+        createDeck();
+        // Deal the player's hand
+        playerHand.push(dealCard());
+        playerHand.push(dealCard());
+        renderPlayerCard(playerHand);
+        // Deal the house's hand
+        houseHand.push(dealCard());
+        houseHand.push(dealCard());
+        console.log(playerHand);
+        console.log(houseHand);
+        renderDealerFirstCard();
+
+        document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString();
+        document.getElementById("houseTotal").innerHTML = "House Total: " + firstDealerCardTotal(houseHand[0]).toString();
+    }
+
+function firstDealerCardTotal(houseCard) {
+    let total = 0;
+    if (houseCard.value === "J" || houseCard.value === "Q" || houseCard.value === "K") {
+        total += 10;
+    } else if (houseCard.value === "A") {
+        total += 11;
+    } else {
+        total += parseInt(houseCard.value);
+    }
+    return total;
+}
+
+function cardTotal(hand) {
+    let total = 0;
+    let aces = 0;
+    for (let i = 0; i < hand.length; i++) {
+        let card = hand[i];
+        if (card.value === "J" || card.value === "Q" || card.value === "K") {
+            total += 10;
+        } else if (card.value === "A") {
+            aces += 1;
+        } else {
+            total += parseInt(card.value);
+        }
+    }
+    for (let i = 0; i < aces; i++) {
+        if (total + 11 > 21) {
+            total += 1;
+        } else {
+            total += 11;
+        }
+    }
+    return total;
+}
+
+    function didPlayerGoOver() {
+        if (cardTotal(playerHand) > 21) {
+            document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " BUSTED!";
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function playerDoublesDown() {
+        totalMoney = totalMoney - bet;
+        bet = bet * 2;
+        document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+        playerHit();
+        document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString();
+        if (didPlayerGoOver()) {
+            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            // reset player and dealer hands
+            playerHand = [];
+            houseHand = [];
+        } else {
+            houseTurn();
+        }
+    }
+
+    function houseTurn() {
+        // first reveal second dealer card
+        let dealerHandTable = document.getElementById("dealerCards");
+        dealerHandTable.innerHTML = "";
+        for (let i = 0; i < houseHand.length; i++) {
+            let card = houseHand[i];
+            let cardDiv = document.createElement("div");
+            cardDiv.className = "card";
+            cardDiv.innerHTML = card.value + " " + card.suit;
+            dealerHandTable.appendChild(cardDiv);
+        }
+        document.getElementById("houseTotal").innerHTML = "House Total: " + cardTotal(houseHand).toString();
+        // if dealer has less than 17, hit
+        
+        while (cardTotal(houseHand) < 17) {
+            houseHand.push(dealCard());
+            let card = houseHand[houseHand.length - 1];
+            let cardDiv = document.createElement("div");
+            cardDiv.className = "card";
+            cardDiv.innerHTML = card.value + " " + card.suit;
+            dealerHandTable.appendChild(cardDiv);
+            document.getElementById("houseTotal").innerHTML = "House Total: " + cardTotal(houseHand).toString();
+        }
+        // if dealer has more than 21, player wins
+        if (cardTotal(houseHand) > 21) {
+            totalMoney = totalMoney + bet * 2;
+            document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            // display message saying player won
+            document.getElementById('houseTotal').innerHTML = "House Total: " + cardTotal(houseHand).toString() + " BUSTED!";
+            // reset player and dealer hands
+            playerHand = [];
+            houseHand = [];
+        } else {
+            // if dealer has more than player, dealer wins
+            if (cardTotal(houseHand) > cardTotal(playerHand)) {
+                (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+                (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+                (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+                (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+                (document.getElementById('double') as HTMLButtonElement).disabled = true;
+                // display message saying dealer won
+                document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " Less Than Dealer!";
+                // reset player and dealer hands
+                playerHand = [];
+                houseHand = [];
+            } else if (cardTotal(houseHand) < cardTotal(playerHand)) {
+                // if dealer has less than player, player wins
+                totalMoney = totalMoney + bet * 2;
+                document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+                (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+                (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+                (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+                (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+                (document.getElementById('double') as HTMLButtonElement).disabled = true;
+                // display message saying player won
+                document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " More Than Dealer!";
+                // reset player and dealer hands
+                playerHand = [];
+                houseHand = [];
+            } else if (cardTotal(houseHand) == cardTotal(playerHand)) {
+                // if dealer has same as player, push
+                totalMoney = totalMoney + bet;
+                document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+                (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+                (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+                (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+                (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+                (document.getElementById('double') as HTMLButtonElement).disabled = true;
+                // reset player and dealer hands
+                playerHand = [];
+                houseHand = [];
+            }
+        }
+    }
+
+    document.getElementById("betButton").addEventListener("click", function () {
+        (document.getElementById('betButton') as HTMLButtonElement).disabled = true;
+        (document.getElementById('bet') as HTMLButtonElement).disabled = true;
+        (document.getElementById('hit') as HTMLButtonElement).disabled = false;
+        (document.getElementById('stand') as HTMLButtonElement).disabled = false;
+        (document.getElementById('double') as HTMLButtonElement).disabled = false;
+
+        bet = parseInt((document.getElementById('bet') as HTMLButtonElement).value);
+        if (bet > totalMoney) {
+            console.log("Bet: " + bet);
+            console.log("Total Money: " + totalMoney);
+            alert("You can't bet more than you have!");
+            // un-disable the bet button
+            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            // return money to player
+            totalMoney += bet;
+            // reset bet to 0
+            bet = 0;
+            // update total money
+            document.getElementById("totalMoney").innerHTML = "Total Money: " + totalMoney.toString();
+            return;
+        }
+        totalMoney = totalMoney - bet;
+        // disable double button if bet is more than half of total money
+        if (bet > totalMoney) {
+            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+        }
+        document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+        start();
+        // if player has blackjack, player wins
+        if (cardTotal(playerHand) == 21) {
+            totalMoney = totalMoney + bet * 2;
+            document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            // tell player they got blackjack
+            document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " BLACKJACK!";
+            // reset player and dealer hands
+            playerHand = [];
+            houseHand = [];
+        }
+    });
+
+    document.getElementById("hit").addEventListener("click", function () {
+        playerHit();
+        // disable double down button
+        (document.getElementById('double') as HTMLButtonElement).disabled = true;
+        document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString();
+        if (didPlayerGoOver()) {
+            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
+            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
+            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
+            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
+            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            // reset player and dealer hands
+            playerHand = [];
+            houseHand = [];
+        } 
+        // player has 21, player wins
+        if (cardTotal(playerHand) == 21) {
+            houseTurn();
+        }
+    });
+
+    document.getElementById("stand").addEventListener("click", function () {
+        playerStand();
+        houseTurn();
+    });
+
+    document.getElementById("double").addEventListener("click", function () {
+        playerDoublesDown();
+    });
+</script>
