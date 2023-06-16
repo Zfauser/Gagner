@@ -414,21 +414,10 @@ function cardTotal(hand) {
             // update total money
             document.getElementById("totalMoney").innerHTML = "Total Money: " + totalMoney.toString();
             return;
-        }
-        // if bet has a decimal, alert user
+        } 
+        // if bet is not a whole number, round up
         if (bet % 1 != 0) {
-            alert("You can't bet a decimal!");
-            // un-disable the bet button
-            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-            (document.getElementById('double') as HTMLButtonElement).disabled = true;
-            // reset bet to 0
-            bet = 0;
-            // update total money
-            document.getElementById("totalMoney").innerHTML = "Total Money: " + totalMoney.toString();
-            return;
+            bet = Math.ceil(bet);
         }
         totalMoney = totalMoney - bet;
         // disable double button if bet is more than half of total money
