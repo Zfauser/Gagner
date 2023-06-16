@@ -1,7 +1,6 @@
 <!--logo-->
 ## ![https://casino.zachfauser.com/logo.png](https://casino.zachfauser.com/logo.png)
 ## Gagner Casino
-<hr>
 
 ## Commands
 
