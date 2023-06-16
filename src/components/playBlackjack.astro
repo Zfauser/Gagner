@@ -6,8 +6,8 @@
     <p id="playerTotal" class="player">Player Total: 0</p>
     <button id="hit" class="hit" disabled>Hit</button>
     <button id="stand" class="stand" disabled>Stand</button>
-    <br>
-    <br>
+    <br />
+    <br />
     <button id="double" class="double" disabled>Double Down</button>
     <br />
     <br />
@@ -127,7 +127,9 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
     } else {
         totalMoney = parseInt(localStorage.getItem("totalMoney"));
     }
-    document.getElementById('totalMoney').textContent = `Total Money: ${totalMoney}`;
+    document.getElementById(
+        "totalMoney"
+    ).textContent = `Total Money: ${totalMoney}`;
     // Define the card values and suits
     const values = [
         "A",
@@ -145,7 +147,6 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
         "K",
     ];
     const suits = ["♠", "♥", "♦", "♣"];
-
 
     // Define some global variables
     let deck = []; // The array of cards
@@ -197,7 +198,7 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
             0: {suit: '♦', value: 'J'}
             1: {suit: '♥', value: 'Q'}
         */
-       playersHandTable.innerHTML = "";
+        playersHandTable.innerHTML = "";
         for (let i = 0; i < playersHand.length; i++) {
             let card = playersHand[i];
             let cardDiv = document.createElement("div");
@@ -212,7 +213,7 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
         renderPlayerCard(playerHand);
     }
 
-    function renderDealerFirstCard(){
+    function renderDealerFirstCard() {
         let dealerHandTable = document.getElementById("dealerCards");
         dealerHandTable.innerHTML = "";
         let card = houseHand[0];
@@ -223,11 +224,13 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
     }
 
     function playerStand() {
-        (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-        (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-        (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-        (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-        (document.getElementById('double') as HTMLButtonElement).disabled = true;
+        (document.getElementById("betButton") as HTMLButtonElement).disabled =
+            false;
+        (document.getElementById("bet") as HTMLButtonElement).disabled = false;
+        (document.getElementById("hit") as HTMLButtonElement).disabled = true;
+        (document.getElementById("stand") as HTMLButtonElement).disabled = true;
+        (document.getElementById("double") as HTMLButtonElement).disabled =
+            true;
     }
     function start() {
         // Create the deck
@@ -243,48 +246,61 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
         console.log(houseHand);
         renderDealerFirstCard();
 
-        document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString();
-        document.getElementById("houseTotal").innerHTML = "House Total: " + firstDealerCardTotal(houseHand[0]).toString();
+        document.getElementById("playerTotal").innerHTML =
+            "Player Total: " + cardTotal(playerHand).toString();
+        document.getElementById("houseTotal").innerHTML =
+            "House Total: " + firstDealerCardTotal(houseHand[0]).toString();
     }
 
-function firstDealerCardTotal(houseCard) {
-    let total = 0;
-    if (houseCard.value === "J" || houseCard.value === "Q" || houseCard.value === "K") {
-        total += 10;
-    } else if (houseCard.value === "A") {
-        total += 11;
-    } else {
-        total += parseInt(houseCard.value);
-    }
-    return total;
-}
-
-function cardTotal(hand) {
-    let total = 0;
-    let aces = 0;
-    for (let i = 0; i < hand.length; i++) {
-        let card = hand[i];
-        if (card.value === "J" || card.value === "Q" || card.value === "K") {
+    function firstDealerCardTotal(houseCard) {
+        let total = 0;
+        if (
+            houseCard.value === "J" ||
+            houseCard.value === "Q" ||
+            houseCard.value === "K"
+        ) {
             total += 10;
-        } else if (card.value === "A") {
-            aces += 1;
-        } else {
-            total += parseInt(card.value);
-        }
-    }
-    for (let i = 0; i < aces; i++) {
-        if (total + 11 > 21) {
-            total += 1;
-        } else {
+        } else if (houseCard.value === "A") {
             total += 11;
+        } else {
+            total += parseInt(houseCard.value);
         }
+        return total;
     }
-    return total;
-}
+
+    function cardTotal(hand) {
+        let total = 0;
+        let aces = 0;
+        for (let i = 0; i < hand.length; i++) {
+            let card = hand[i];
+            if (
+                card.value === "J" ||
+                card.value === "Q" ||
+                card.value === "K"
+            ) {
+                total += 10;
+            } else if (card.value === "A") {
+                aces += 1;
+            } else {
+                total += parseInt(card.value);
+            }
+        }
+        for (let i = 0; i < aces; i++) {
+            if (total + 11 > 21) {
+                total += 1;
+            } else {
+                total += 11;
+            }
+        }
+        return total;
+    }
 
     function didPlayerGoOver() {
         if (cardTotal(playerHand) > 21) {
-            document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " BUSTED!";
+            document.getElementById("playerTotal").innerHTML =
+                "Player Total: " +
+                cardTotal(playerHand).toString() +
+                " BUSTED!";
             return true;
         } else {
             return false;
@@ -294,20 +310,40 @@ function cardTotal(hand) {
     function playerDoublesDown() {
         totalMoney = totalMoney - bet;
         bet = bet * 2;
-        document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+        document.getElementById("totalMoney").innerHTML =
+            "Total Money: " + totalMoney.toString();
         playerHit();
-        document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString();
+        document.getElementById("playerTotal").innerHTML =
+            "Player Total: " + cardTotal(playerHand).toString();
         if (didPlayerGoOver()) {
-            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            (
+                document.getElementById("betButton") as HTMLButtonElement
+            ).disabled = false;
+            (document.getElementById("bet") as HTMLButtonElement).disabled =
+                false;
+            (document.getElementById("hit") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("stand") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("double") as HTMLButtonElement).disabled =
+                true;
             // reset player and dealer hands
             playerHand = [];
             houseHand = [];
         } else {
             houseTurn();
+            if (totalMoney == 0) {
+                // add a button to restart the game
+                document.getElementById("restart").innerHTML =
+                    "<button id='restartButton'>You're out of money! Reset?</button>";
+                document
+                    .getElementById("restartButton")
+                    .addEventListener("click", () => {
+                        totalMoney = 100;
+                        localStorage.setItem("totalMoney", "100");
+                        window.location.href = "/blackjack";
+                    });
+            }
         }
     }
 
@@ -322,9 +358,10 @@ function cardTotal(hand) {
             cardDiv.innerHTML = card.value + " " + card.suit;
             dealerHandTable.appendChild(cardDiv);
         }
-        document.getElementById("houseTotal").innerHTML = "House Total: " + cardTotal(houseHand).toString();
+        document.getElementById("houseTotal").innerHTML =
+            "House Total: " + cardTotal(houseHand).toString();
         // if dealer has less than 17, hit
-        
+
         while (cardTotal(houseHand) < 17) {
             houseHand.push(dealCard());
             let card = houseHand[houseHand.length - 1];
@@ -332,58 +369,99 @@ function cardTotal(hand) {
             cardDiv.className = "card";
             cardDiv.innerHTML = card.value + " " + card.suit;
             dealerHandTable.appendChild(cardDiv);
-            document.getElementById("houseTotal").innerHTML = "House Total: " + cardTotal(houseHand).toString();
+            document.getElementById("houseTotal").innerHTML =
+                "House Total: " + cardTotal(houseHand).toString();
         }
         // if dealer has more than 21, player wins
         if (cardTotal(houseHand) > 21) {
             totalMoney = totalMoney + bet * 2;
-            document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
-            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            document.getElementById("totalMoney").innerHTML =
+                "Total Money: " + totalMoney.toString();
+            (
+                document.getElementById("betButton") as HTMLButtonElement
+            ).disabled = false;
+            (document.getElementById("bet") as HTMLButtonElement).disabled =
+                false;
+            (document.getElementById("hit") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("stand") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("double") as HTMLButtonElement).disabled =
+                true;
             // display message saying player won
-            document.getElementById('houseTotal').innerHTML = "House Total: " + cardTotal(houseHand).toString() + " BUSTED!";
+            document.getElementById("houseTotal").innerHTML =
+                "House Total: " + cardTotal(houseHand).toString() + " BUSTED!";
             // reset player and dealer hands
             playerHand = [];
             houseHand = [];
         } else {
             // if dealer has more than player, dealer wins
             if (cardTotal(houseHand) > cardTotal(playerHand)) {
-                (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-                (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-                (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-                (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-                (document.getElementById('double') as HTMLButtonElement).disabled = true;
+                (
+                    document.getElementById("betButton") as HTMLButtonElement
+                ).disabled = false;
+                (document.getElementById("bet") as HTMLButtonElement).disabled =
+                    false;
+                (document.getElementById("hit") as HTMLButtonElement).disabled =
+                    true;
+                (
+                    document.getElementById("stand") as HTMLButtonElement
+                ).disabled = true;
+                (
+                    document.getElementById("double") as HTMLButtonElement
+                ).disabled = true;
                 // display message saying dealer won
-                document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " Less Than Dealer!";
+                document.getElementById("playerTotal").innerHTML =
+                    "Player Total: " +
+                    cardTotal(playerHand).toString() +
+                    " Less Than Dealer!";
                 // reset player and dealer hands
                 playerHand = [];
                 houseHand = [];
             } else if (cardTotal(houseHand) < cardTotal(playerHand)) {
                 // if dealer has less than player, player wins
                 totalMoney = totalMoney + bet * 2;
-                document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
-                (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-                (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-                (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-                (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-                (document.getElementById('double') as HTMLButtonElement).disabled = true;
+                document.getElementById("totalMoney").innerHTML =
+                    "Total Money: " + totalMoney.toString();
+                (
+                    document.getElementById("betButton") as HTMLButtonElement
+                ).disabled = false;
+                (document.getElementById("bet") as HTMLButtonElement).disabled =
+                    false;
+                (document.getElementById("hit") as HTMLButtonElement).disabled =
+                    true;
+                (
+                    document.getElementById("stand") as HTMLButtonElement
+                ).disabled = true;
+                (
+                    document.getElementById("double") as HTMLButtonElement
+                ).disabled = true;
                 // display message saying player won
-                document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " More Than Dealer!";
+                document.getElementById("playerTotal").innerHTML =
+                    "Player Total: " +
+                    cardTotal(playerHand).toString() +
+                    " More Than Dealer!";
                 // reset player and dealer hands
                 playerHand = [];
                 houseHand = [];
             } else if (cardTotal(houseHand) == cardTotal(playerHand)) {
                 // if dealer has same as player, push
                 totalMoney = totalMoney + bet;
-                document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
-                (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-                (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-                (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-                (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-                (document.getElementById('double') as HTMLButtonElement).disabled = true;
+                document.getElementById("totalMoney").innerHTML =
+                    "Total Money: " + totalMoney.toString();
+                (
+                    document.getElementById("betButton") as HTMLButtonElement
+                ).disabled = false;
+                (document.getElementById("bet") as HTMLButtonElement).disabled =
+                    false;
+                (document.getElementById("hit") as HTMLButtonElement).disabled =
+                    true;
+                (
+                    document.getElementById("stand") as HTMLButtonElement
+                ).disabled = true;
+                (
+                    document.getElementById("double") as HTMLButtonElement
+                ).disabled = true;
                 // reset player and dealer hands
                 playerHand = [];
                 houseHand = [];
@@ -392,97 +470,173 @@ function cardTotal(hand) {
     }
 
     document.getElementById("betButton").addEventListener("click", function () {
-        (document.getElementById('betButton') as HTMLButtonElement).disabled = true;
-        (document.getElementById('bet') as HTMLButtonElement).disabled = true;
-        (document.getElementById('hit') as HTMLButtonElement).disabled = false;
-        (document.getElementById('stand') as HTMLButtonElement).disabled = false;
-        (document.getElementById('double') as HTMLButtonElement).disabled = false;
+        (document.getElementById("betButton") as HTMLButtonElement).disabled =
+            true;
+        (document.getElementById("bet") as HTMLButtonElement).disabled = true;
+        (document.getElementById("hit") as HTMLButtonElement).disabled = false;
+        (document.getElementById("stand") as HTMLButtonElement).disabled =
+            false;
+        (document.getElementById("double") as HTMLButtonElement).disabled =
+            false;
 
-        bet = parseInt((document.getElementById('bet') as HTMLButtonElement).value);
+        bet = parseInt(
+            (document.getElementById("bet") as HTMLButtonElement).value
+        );
         if (bet > totalMoney) {
             console.log("Bet: " + bet);
             console.log("Total Money: " + totalMoney);
             alert("You can't bet more than you have!");
             // un-disable the bet button
-            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            (
+                document.getElementById("betButton") as HTMLButtonElement
+            ).disabled = false;
+            (document.getElementById("bet") as HTMLButtonElement).disabled =
+                false;
+            (document.getElementById("hit") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("stand") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("double") as HTMLButtonElement).disabled =
+                true;
             // reset bet to 0
             bet = 0;
             // update total money
-            document.getElementById("totalMoney").innerHTML = "Total Money: " + totalMoney.toString();
+            document.getElementById("totalMoney").innerHTML =
+                "Total Money: " + totalMoney.toString();
             return;
-        } 
+        }
         // if bet is not a whole number, round up
         if (bet % 1 != 0) {
             bet = Math.ceil(bet);
         }
+        // if bet is less than 0, set bet to 0
+        if (bet < 0) {
+            bet = 0;
+        }
+        (document.getElementById("bet") as HTMLInputElement).value = bet.toString();
         totalMoney = totalMoney - bet;
         // disable double button if bet is more than half of total money
         if (bet > totalMoney) {
-            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            (document.getElementById("double") as HTMLButtonElement).disabled =
+                true;
         }
-        document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
+        document.getElementById("totalMoney").innerHTML =
+            "Total Money: " + totalMoney.toString();
         start();
         // if player has blackjack, player wins
         if (cardTotal(playerHand) == 21) {
             totalMoney = totalMoney + bet * 2;
-            document.getElementById('totalMoney').innerHTML = "Total Money: " + totalMoney.toString();
-            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            document.getElementById("totalMoney").innerHTML =
+                "Total Money: " + totalMoney.toString();
+            (
+                document.getElementById("betButton") as HTMLButtonElement
+            ).disabled = false;
+            (document.getElementById("bet") as HTMLButtonElement).disabled =
+                false;
+            (document.getElementById("hit") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("stand") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("double") as HTMLButtonElement).disabled =
+                true;
             // tell player they got blackjack
-            document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString() + " BLACKJACK!";
+            document.getElementById("playerTotal").innerHTML =
+                "Player Total: " +
+                cardTotal(playerHand).toString() +
+                " BLACKJACK!";
             // reset player and dealer hands
             playerHand = [];
             houseHand = [];
         }
-        localStorage.setItem('totalMoney', totalMoney.toString());
+        localStorage.setItem("totalMoney", totalMoney.toString());
     });
 
     document.getElementById("hit").addEventListener("click", function () {
         playerHit();
         // disable double down button
-        (document.getElementById('double') as HTMLButtonElement).disabled = true;
-        document.getElementById('playerTotal').innerHTML = "Player Total: " + cardTotal(playerHand).toString();
+        (document.getElementById("double") as HTMLButtonElement).disabled =
+            true;
+        document.getElementById("playerTotal").innerHTML =
+            "Player Total: " + cardTotal(playerHand).toString();
         if (didPlayerGoOver()) {
-            (document.getElementById('betButton') as HTMLButtonElement).disabled = false;
-            (document.getElementById('bet') as HTMLButtonElement).disabled = false;
-            (document.getElementById('hit') as HTMLButtonElement).disabled = true;
-            (document.getElementById('stand') as HTMLButtonElement).disabled = true;
-            (document.getElementById('double') as HTMLButtonElement).disabled = true;
+            (
+                document.getElementById("betButton") as HTMLButtonElement
+            ).disabled = false;
+            (document.getElementById("bet") as HTMLButtonElement).disabled =
+                false;
+            (document.getElementById("hit") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("stand") as HTMLButtonElement).disabled =
+                true;
+            (document.getElementById("double") as HTMLButtonElement).disabled =
+                true;
             // reset player and dealer hands
             playerHand = [];
             houseHand = [];
-        } 
+        }
         // player has 21, player wins
         if (cardTotal(playerHand) == 21) {
             houseTurn();
-            localStorage.setItem('totalMoney', totalMoney.toString());
+            localStorage.setItem("totalMoney", totalMoney.toString());
+        }
+        if (totalMoney == 0) {
+            // add a button to restart the game
+            document.getElementById("restart").innerHTML =
+                "<button id='restartButton'>You're out of money! Reset?</button>";
+            document
+                .getElementById("restartButton")
+                .addEventListener("click", () => {
+                    totalMoney = 100;
+                    localStorage.setItem("totalMoney", "100");
+                    window.location.href = "/blackjack";
+                });
         }
     });
 
     document.getElementById("stand").addEventListener("click", function () {
         playerStand();
         houseTurn();
-        localStorage.setItem('totalMoney', totalMoney.toString());
+        localStorage.setItem("totalMoney", totalMoney.toString());
+        if (totalMoney == 0) {
+            // add a button to restart the game
+            document.getElementById("restart").innerHTML =
+                "<button id='restartButton'>You're out of money! Reset?</button>";
+            document
+                .getElementById("restartButton")
+                .addEventListener("click", () => {
+                    totalMoney = 100;
+                    localStorage.setItem("totalMoney", "100");
+                    window.location.href = "/blackjack";
+                });
+        }
     });
 
     document.getElementById("double").addEventListener("click", function () {
         playerDoublesDown();
-        localStorage.setItem('totalMoney', totalMoney.toString());
+        localStorage.setItem("totalMoney", totalMoney.toString());
+        if (totalMoney == 0) {
+            // add a button to restart the game
+            document.getElementById("restart").innerHTML =
+                "<button id='restartButton'>You're out of money! Reset?</button>";
+            document
+                .getElementById("restartButton")
+                .addEventListener("click", () => {
+                    totalMoney = 100;
+                    localStorage.setItem("totalMoney", "100");
+                    window.location.href = "/blackjack";
+                });
+        }
     });
     if (totalMoney == 0) {
         // add a button to restart the game
-        document.getElementById('restart').innerHTML = "<button id='restartButton'>You're out of money! Reset?</button>";
-        document.getElementById('restartButton').addEventListener('click', () => {
-        totalMoney = 100;
-        localStorage.setItem("totalMoney", "100");
-        window.location.href = '/blackjack';
-    });
+        document.getElementById("restart").innerHTML =
+            "<button id='restartButton'>You're out of money! Reset?</button>";
+        document
+            .getElementById("restartButton")
+            .addEventListener("click", () => {
+                totalMoney = 100;
+                localStorage.setItem("totalMoney", "100");
+                window.location.href = "/blackjack";
+            });
     }
 </script>
