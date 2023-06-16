@@ -3,6 +3,7 @@ import RouletteWheel from './RouletteWheel.jsx';
 ---
 <RouletteWheel client:only />
 <div>
+  <div id="restart"></div>
   <h2 id="totalMoney">Total Money: 0</h2>
   <h2 id="currentBet">Current Bet: 0</h2>
     <table class="roulette-table">
@@ -341,6 +342,11 @@ let winningNumber;
 const bettingButtons = document.querySelectorAll('.roulette-table button');
 // if totalMoney is not in local storage, set it to 100
 let totalMoney = 100;
+if (!localStorage.getItem('totalMoney')) {
+  localStorage.setItem('totalMoney', "100");
+} else {
+  totalMoney = parseInt(localStorage.getItem('totalMoney'));
+}
 document.getElementById('totalMoney').textContent = `Total Money: ${totalMoney}`;
 let currentBet = 0;
 let bets = {};
@@ -398,7 +404,6 @@ const odd = [
 ];
 
 // clear all local storage
-localStorage.clear();
 
 bettingButtons.forEach(button => {
   button.addEventListener('click', event => {
@@ -471,6 +476,15 @@ function getMultiply(betType) {
 }
 
 function checkURL() {
+  if (parseInt(totalMoney) == 0) {
+    // create a button allowing user to reset money
+    let resetMoneyButton = document.createElement('button');
+    resetMoneyButton.textContent = 'Reset Money';
+    resetMoneyButton.addEventListener('click', () => {
+      totalMoney = 100;
+      updateBets();
+    });
+  }
   let paid;
   const urlParams = new URLSearchParams(window.location.search);
   const doneSpinning = urlParams.get('doneSpinning') === 'true';
@@ -548,11 +562,22 @@ function checkURL() {
     }
     totalMoney = (parseInt(totalMoney) + payThePlayer) - parseInt(currentBet)
     // save to local storage
-    localStorage.setItem('totalMoney', parseInt(totalMoney));
+    localStorage.setItem('totalMoney', totalMoney);
     // convert
     clearBets.click();
   }
+  // update total money local storage
+  localStorage.setItem('totalMoney', totalMoney);
 }
 
 setInterval(checkURL, 0o1);
+if (totalMoney == 0) {
+        // add a button to restart the game
+        document.getElementById('restart').innerHTML = "<button id='restartButton'>You're out of money! Reset?</button>";
+        document.getElementById('restartButton').addEventListener('click', () => {
+        totalMoney = 100;
+        localStorage.setItem('totalMoney', "100");
+        window.location.href = '/roulette';
+    });
+    }
 </script>

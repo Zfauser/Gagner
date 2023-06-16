@@ -12,6 +12,7 @@
     <br />
     <br />
     <hr />
+    <div id="restart"></div>
     <h2 id="totalMoney">Total Money: 100</h2>
     <input type="number" id="bet" class="bet" value="10" /><button
         id="betButton"
@@ -120,6 +121,13 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
 </style>
 <!-- JavaScript code -->
 <script>
+    let totalMoney = 100;
+    if (!localStorage.getItem("totalMoney")) {
+        localStorage.setItem("totalMoney", "100");
+    } else {
+        totalMoney = parseInt(localStorage.getItem("totalMoney"));
+    }
+    document.getElementById('totalMoney').textContent = `Total Money: ${totalMoney}`;
     // Define the card values and suits
     const values = [
         "A",
@@ -143,7 +151,6 @@ Proudly Triple Check Certified By <a href="https://zachfauser.com/"
     let deck = []; // The array of cards
     let houseHand = []; // The array of cards for the house
     let playerHand = []; // The array of cards for the player
-    let totalMoney = 100; // The initial amount of money for the player
     let bet = 0;
     let gameOver = false;
     // Create a function to create a deck of cards
@@ -430,6 +437,7 @@ function cardTotal(hand) {
             playerHand = [];
             houseHand = [];
         }
+        localStorage.setItem('totalMoney', totalMoney.toString());
     });
 
     document.getElementById("hit").addEventListener("click", function () {
@@ -450,15 +458,27 @@ function cardTotal(hand) {
         // player has 21, player wins
         if (cardTotal(playerHand) == 21) {
             houseTurn();
+            localStorage.setItem('totalMoney', totalMoney.toString());
         }
     });
 
     document.getElementById("stand").addEventListener("click", function () {
         playerStand();
         houseTurn();
+        localStorage.setItem('totalMoney', totalMoney.toString());
     });
 
     document.getElementById("double").addEventListener("click", function () {
         playerDoublesDown();
+        localStorage.setItem('totalMoney', totalMoney.toString());
     });
+    if (totalMoney == 0) {
+        // add a button to restart the game
+        document.getElementById('restart').innerHTML = "<button id='restartButton'>You're out of money! Reset?</button>";
+        document.getElementById('restartButton').addEventListener('click', () => {
+        totalMoney = 100;
+        localStorage.setItem("totalMoney", "100");
+        window.location.href = '/blackjack';
+    });
+    }
 </script>
