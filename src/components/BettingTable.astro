@@ -561,12 +561,13 @@ function checkURL() {
       paid = 0;
     }
     totalMoney = (parseInt(totalMoney) + payThePlayer) - parseInt(currentBet)
-    localStorage.setItem('totalMoney', totalMoney);
     // save to local storage
+    localStorage.setItem('totalMoney', totalMoney);
     // convert
     clearBets.click();
   }
   // update total money local storage
+  localStorage.setItem('totalMoney', totalMoney);
 }
 
 setInterval(checkURL, 0o1);
