@@ -35,6 +35,7 @@ const RouletteWheel = (props) => {
 
   const spin = () => {
     const num = getRandomNumber();
+    localStorage.setItem('totalMoney', totalMoney);
     let numColor = "";
     const i = numbers.length * 2 + numbers.indexOf(num) + 1;
     winningNumber = numbers[i - (numbers.length * 2) - 1];
