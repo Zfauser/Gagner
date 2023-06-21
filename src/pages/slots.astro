@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SlotMachine from '../components/SlotMachine.astro';
+---
+<style>
+    main {
+        margin: auto;
+		padding: 2rem;
+		max-width: 60ch;
+        max-height: 60ch;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0;
+    }
+</style>
+
+<Layout title="Slots">
+    <Header url=${currentUrl} />
+    <main>
+        <SlotMachine/>
+        <br>
+        <hr>
+        <img src="/zachfausersignature.png" alt="Zach Fauser's Signature" width="200">
+        <br>
+        <a style="text-align: center; font-size: 10px;  bottom: 0;" >Not a real gambling website</a>
+    </main>
+</Layout>

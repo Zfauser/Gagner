@@ -1,0 +1,101 @@
+<div>
+    <div class="reels" >
+        <div class="reel1" id="reel">
+            🍒
+        </div>
+        <div class="reel2" id="reel">
+            🍒
+        </div>
+        <div class="reel3" id="reel">
+            🍒
+        </div>
+    </div>
+    <br>
+    <button id="spin">Spin</button>
+</div>
+<style>
+#reel {
+    border: 1px dashed black;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 50px;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: middle;
+    line-height: 100px;
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    display: table-cell;
+}
+.reels {
+    display: table;
+    margin: 0 auto;
+    float: none;
+}
+</style>
+<script>
+    let slotSymbols = ['🍒', '🍊', '🍋', '🍉', '🍇', '🍎', '🍓', '🍌', '🍑', '🍍']
+    let spinButton = document.getElementById('spin')
+
+    function spinSlots() {
+        let reel1 = document.getElementsByClassName('reel1')[0]
+        let reel2 = document.getElementsByClassName('reel2')[0]
+        let reel3 = document.getElementsByClassName('reel3')[0]
+        let reel1Symbol = slotSymbols[Math.floor(Math.random() * slotSymbols.length)]
+        let reel2Symbol = slotSymbols[Math.floor(Math.random() * slotSymbols.length)]
+        let reel3Symbol = slotSymbols[Math.floor(Math.random() * slotSymbols.length)]
+        let reelOneIndex = slotSymbols.length * 2 +  slotSymbols.indexOf(reel1Symbol) + 1; 
+        let reelTwoIndex = slotSymbols.length * 3 + slotSymbols.indexOf(reel2Symbol) + 1;
+        let reelThreeIndex = 0;
+        if (reel1 == reel2) {
+            reelThreeIndex = slotSymbols.length * 4 + slotSymbols.indexOf(reel3Symbol) + 1;
+        } else {
+            reelThreeIndex = slotSymbols.length * 3 + slotSymbols.indexOf(reel3Symbol) + 1;
+        }
+        let payoutDelay = 1000;
+        (spinButton as HTMLButtonElement).disabled = true
+        let symbols = []
+        for (let i = 0; i < reelOneIndex; i++) {
+            setTimeout(function() {
+                reel1.innerHTML = slotSymbols[i % slotSymbols.length]
+            }, i * 100)
+            if (i == reelOneIndex - 1) {
+                symbols.push(slotSymbols[i % slotSymbols.length])
+            }
+        }
+        for (let i = 0; i < reelTwoIndex; i++) {
+            setTimeout(function() {
+                reel2.innerHTML = slotSymbols[i % slotSymbols.length]
+            }, i * 100)
+            if (i == reelTwoIndex - 1) {
+                symbols.push(slotSymbols[i % slotSymbols.length])
+            }
+        }
+        for (let i = 0; i < reelThreeIndex; i++) {
+            setTimeout(function() {
+                reel3.innerHTML = slotSymbols[i % slotSymbols.length]
+            }, i * 100)
+            if (i == reelThreeIndex - 1) {
+                symbols.push(slotSymbols[i % slotSymbols.length])
+            }
+            // calculate payout delay
+            payoutDelay = reelThreeIndex * 100;
+        }
+        setTimeout(function() {
+            onePayout(symbols)
+        }, payoutDelay)
+    }
+
+    function onePayout(symbols) {
+        if (symbols[0] == symbols[1] && symbols[1] == symbols[2]) {
+            alert('You won!')
+        }
+        (spinButton as HTMLButtonElement).disabled = false
+    }
+
+    spinButton.addEventListener('click', function() {
+        spinSlots()
+    })
+</script>
